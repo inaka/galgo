@@ -1,11 +1,7 @@
 Galgo
 =====
 
-When you want your logs to be displayed on screen. <img src="http://i59.tinypic.com/eagm6h.png" align="right" style="float:right" height="200" />
-
-# Galgo
-
-A tiny library to display your log statements on top of your UI.
+A tiny Android library for those moments when you want your logs to be displayed on screen. <img src="http://i59.tinypic.com/eagm6h.png" align="right" style="float:right" height="100" />
 
 ### Abstract
 
