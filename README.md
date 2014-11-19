@@ -6,7 +6,7 @@ A tiny Android library for those moments when you want your logs to be displayed
 <img src="http://i59.tinypic.com/eagm6h.png" align="right" style="float:right" height="200" />
 Sometimes we want/need to know what's going on behind the scenes but our app is not always connected to our computer to let us check the logs. Galgo will let you display your log messages as an overlay on top of your UI.
 
-Extremely useful for testers who want to have more insight into what's going on behind the scenes in our apps when your app misbehaves.
+Extremely useful for testers who want to have more insight into what's going on behind the scenes in our apps when it misbehaves.
 
 You can also define some basic settings such as background color, text color, text size and number of lines to display on screen so it better fits your needs.
 
@@ -47,7 +47,7 @@ public class ExampleActivity extends Activity {
 ```
 
 ### Example
-Here's an example of the log messages of being displayed on top of our Activity:
+Here's an example of the log messages being displayed on top of our Activity:
 
 <img src="http://i61.tinypic.com/2qw3by0.gif" align="center" style="float:center" height="400" />
 
