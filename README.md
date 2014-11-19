@@ -1,11 +1,9 @@
 Galgo
 =====
 
-When you want your logs to be displayed on screen
+When you want your logs to be displayed on screen. <img src="http://i59.tinypic.com/eagm6h.png" align="right" style="float:right" height="200" />
 
 # Galgo
-
-<img src="http://i59.tinypic.com/eagm6h.png" align="right" style="float:right" height="400" />
 
 A tiny library to display your log statements on top of your UI.
 
@@ -21,6 +19,10 @@ You can start using Galgo by either cloning this repo and adding it as a module 
 
 Whichever way you choose, you must add the following permission to your AndroidManifest.xml file:
 `<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />`
+
+### Example
+Here's an example of the log messages of being displayed on top of our Activity.
+<img src="http://i61.tinypic.com/2qw3by0.gif" align="center" style="float:center" height="400" />
 
 ### Contact Us
 For **questions** or **general comments** regarding the use of this library, please use our public
