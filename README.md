@@ -49,7 +49,7 @@ public class ExampleActivity extends Activity {
 ### Example
 Here's an example of the log messages of being displayed on top of our Activity:
 
-<img src="http://i61.tinypic.com/2qw3by0.gif" align="left" style="float:left" height="400" />
+<img src="http://i61.tinypic.com/2qw3by0.gif" align="center" style="float:center" height="400" />
 
 ### Contact Us
 For **questions** or **general comments** regarding the use of this library, please use our public
