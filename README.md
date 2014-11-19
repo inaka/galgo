@@ -1,13 +1,14 @@
 Galgo
 =====
-
-A tiny Android library for those moments when you want your logs to be displayed on screen. <img src="http://i59.tinypic.com/eagm6h.png" align="right" style="float:right" height="100" />
+A tiny Android library for those moments when you want your logs to be displayed on screen. 
 
 ### Abstract
 
 Sometimes we want/need to know what's going on behind the scenes but our app is not always connected to our computer to let us check the logs. Galgo will let you display your log messages as an overlay on top of your UI. Extremely useful for testers who want to have more insight into what's going on behind the scenes in our apps.
 
 You can also define some basic settings such as background color, text color, text size and number of lines to display on screen so it better fits your needs.
+
+<img src="http://i59.tinypic.com/eagm6h.png" align="right" style="float:right" height="100" />
 
 ### Usage
 
