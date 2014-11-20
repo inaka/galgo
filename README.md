@@ -13,11 +13,11 @@ You can also define some basic settings such as background color, text color, te
 ### How to download and Install
 If you're using Android Studio, the simplest way is to download the .aar file and import it as an Android Studio project. Here's how:
 
-Download .aar file here:  * **[galgo-release-1.0.aar](https://github.com/inaka/galgo/blob/master/downloads/galgo-release-1.0.aar)**
+Download .aar file here:  **[galgo-release-1.0.aar](https://github.com/inaka/galgo/blob/master/downloads/galgo-release-1.0.aar)**
 
 1. `File --> New Module --> More Modules --> Import .JAR or .AAR Package`
 2. Select the file `galgo-release-1.0.aar`. Hit Finish.
-3. Add the following line to you dependencies in you project's build.gradle file: `compile project(':galgo-release-1.0')`
+3. Add the following to the dependencies section in you project's build.gradle file: `compile project(':galgo-release-1.0')`
 4. Add the following to your manifest file: `<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />`
 5. Done.
 
