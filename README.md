@@ -10,13 +10,16 @@ Extremely useful for testers who want to have more insight into what's going on 
 
 You can also define some basic settings such as background color, text color, text size and number of lines to display on screen so it better fits your needs.
 
-### Usage
+### How to download and Install
+If you're using Android Studio, the simplest way is to download the .aar file and import it as an Android Studio project. Here's how:
 
-You can start using Galgo by either cloning this repo and adding it as a module in Android Studio or simply downloading the aar file here and importing it directly into Android Studio.
+1. `File --> New Module --> More Modules --> Import .JAR or .AAR Package`
+2. Select the file `galgo-release-1.0.aar`. Hit Finish.
+3. Add the following line to you dependencies in you project's build.gradle file: `compile project(':galgo-release-1.0')`
+4. Add the following to your manifest file: `<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />`
+5. Done.
 
-Whichever way you choose, you must add the following permission to your AndroidManifest.xml file:
-
-`<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />`
+Another option is to simply clone this repo and import it into Android Studio as a module.
 
 ### Code Example
 ```java
@@ -41,6 +44,8 @@ public class ExampleActivity extends Activity {
 
     public void onDestroy() {
         super.onDestroy();
+
+        // always call disable to avoid memory leaks
         Galgo.disable(this);
     }
 }
