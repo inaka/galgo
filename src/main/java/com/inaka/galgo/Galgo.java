@@ -21,6 +21,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
@@ -52,6 +53,7 @@ public class Galgo {
      * @param options Custom {@link com.inaka.galgo.GalgoOptions}
      */
     public static void enable(Context context, GalgoOptions options) {
+        checkPermission(context);
         if (options == null) {
             throw new IllegalArgumentException("GalgoOptions must not be null");
         }
@@ -138,5 +140,13 @@ public class Galgo {
     	Log.e(TAG, message);
     	Message msg = UI_HANDLER.obtainMessage(GalgoService.ERROR, message);
     	msg.sendToTarget();
+    }
+
+    private static void checkPermission(Context context) {
+        String permission = "android.permission.SYSTEM_ALERT_WINDOW";
+        int status = context.checkCallingOrSelfPermission(permission);
+        if (status == PackageManager.PERMISSION_DENIED) {
+            throw new IllegalStateException("in order to use Galgo, " +
+                    "please add the permission " + permission + " to your AndroidManifest.xml");
     }
 }
