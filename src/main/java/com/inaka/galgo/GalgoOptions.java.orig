@@ -17,24 +17,22 @@
  */
 package com.inaka.galgo;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
+<<<<<<< HEAD
 import android.graphics.Color;
 
 public final class GalgoOptions implements Serializable {
+=======
+public final class GalgoOptions implements Parcelable {
+>>>>>>> Converting from Serializable to Parcelable.
 
-<<<<<<< HEAD
     private final int numberOfLines;
     private final int backgroundColor;
     private final int textColor;
     private final int errorTextColor;
     private final int textSize;
-=======
-    public final int numberOfLines;
-    public final int backgroundColor;
-    public final int textColor;
-    public final int textSize;
->>>>>>> Avoiding trivial getters.
 
     /**
      * Contains options for Galgo. Defines
@@ -48,7 +46,6 @@ public final class GalgoOptions implements Serializable {
         textSize = builder.textSize;
     }
 
-<<<<<<< HEAD
     public int getNumberOfLines() {
         return numberOfLines;
     }
@@ -69,8 +66,6 @@ public final class GalgoOptions implements Serializable {
         return textSize;
     }
 
-=======
->>>>>>> Avoiding trivial getters.
     /**
      * Builder for {@link com.inaka.galgo.GalgoOptions}
      */
@@ -142,9 +137,47 @@ public final class GalgoOptions implements Serializable {
         }
     }
 
+<<<<<<< HEAD
     private static void ensurePositiveInt(int value, String msg) {
         if (value <= 0) {
             throw new IllegalArgumentException(msg);
         }
     }
 }
+=======
+    // Parcelable implementation
+
+    private GalgoOptions(Parcel source) {
+        numberOfLines = source.readInt();
+        backgroundColor = source.readInt();
+        textColor = source.readInt();
+        textSize = source.readInt();
+    }
+
+    public static final Creator<GalgoOptions> CREATOR = new Creator<GalgoOptions>() {
+        @Override
+        public GalgoOptions createFromParcel(Parcel source) {
+            return new GalgoOptions(source);
+        }
+
+        @Override
+        public GalgoOptions[] newArray(int size) {
+            return new GalgoOptions[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0; // No special content.
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(numberOfLines);
+        dest.writeInt(backgroundColor);
+        dest.writeInt(textColor);
+        dest.writeInt(textSize);
+    }
+
+}
+>>>>>>> Converting from Serializable to Parcelable.

@@ -52,7 +52,7 @@ public class GalgoService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        this.mOptions = (GalgoOptions) intent.getExtras().get(Galgo.ARG_OPTIONS);
+        this.mOptions = intent.getExtras().getParcelable(Galgo.ARG_OPTIONS);
         return mBinder;
     }
 
