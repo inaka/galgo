@@ -21,10 +21,10 @@ import java.io.Serializable;
 
 public final class GalgoOptions implements Serializable {
 
-    private final int numberOfLines;
-    private final int backgroundColor;
-    private final int textColor;
-    private final int textSize;
+    public final int numberOfLines;
+    public final int backgroundColor;
+    public final int textColor;
+    public final int textSize;
 
     /**
      * Contains options for Galgo. Defines
@@ -35,22 +35,6 @@ public final class GalgoOptions implements Serializable {
         backgroundColor = builder.backgroundColor;
         textColor = builder.textColor;
         textSize = builder.textSize;
-    }
-
-    public int getNumberOfLines() {
-        return numberOfLines;
-    }
-
-    public int getBackgroundColor() {
-        return backgroundColor;
-    }
-
-    public int getTextColor() {
-        return textColor;
-    }
-
-    public int getTextSize() {
-        return textSize;
     }
 
     /**

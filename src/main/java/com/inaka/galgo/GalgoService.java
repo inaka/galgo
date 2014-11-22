@@ -63,17 +63,17 @@ public class GalgoService extends Service {
     public void displayText(String text) {
 
         Spannable spannable = new SpannableString(text);
-        spannable.setSpan(new BackgroundColorSpan(mOptions.getBackgroundColor()),0, text.length(),
+        spannable.setSpan(new BackgroundColorSpan(mOptions.backgroundColor),0, text.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-        if(mTextView.getLineCount() > mOptions.getNumberOfLines()) {
+        if(mTextView.getLineCount() > mOptions.numberOfLines) {
             mTextView.setText(spannable);
         } else {
             mTextView.append(spannable);
         }
 
-        mTextView.setTextSize(mOptions.getTextSize());
-        mTextView.setTextColor(mOptions.getTextColor());
+        mTextView.setTextSize(mOptions.textSize);
+        mTextView.setTextColor(mOptions.textColor);
         mTextView.append("\n");
     }
 
