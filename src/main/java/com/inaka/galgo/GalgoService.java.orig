@@ -84,39 +84,27 @@ public class GalgoService extends Service {
                 break;
             default:
                 textColor = mOptions.textColor;
-=======
-        if(mTextView.getLineCount() > mOptions.numberOfLines()) {
-        int textColor;
-        switch (priority){
-            case ERROR:
-                textColor = mOptions.errorTextColor();
-                break;
-            default:
-                textColor = mOptions.textColor();
->>>>>>> finalized working priority levels
                 break;
         }
         spannable.setSpan(new ForegroundColorSpan(textColor),0,text.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-<<<<<<< HEAD
-        if(mTextView.getLineCount() > mOptions.numberOfLines()) {
-            //TODO make this in scrolling mode only
+        if(mTextView.getLineCount() > mOptions.numberOfLines) {
             mTextView.setText(mTextView.getEditableText().delete(0, mTextView.getText().toString().split("\n", 2)[0].length()+1));
             mTextView.append(spannable);
+=======
+        if(mTextView.getLineCount() > mOptions.numberOfLines) {
+            mTextView.setText(spannable);
+>>>>>>> Avoiding trivial getters.
         } else {
             mTextView.append(spannable);
         }
 
-=======
-        if(mTextView.getLineCount() > mOptions.numberOfLines) {
-            mTextView.setText(spannable);
-        } else {
-            mTextView.append(spannable);
-        }
-		
->>>>>>> finalized working priority levels
         mTextView.setTextSize(mOptions.textSize);
+<<<<<<< HEAD
+=======
+        mTextView.setTextColor(mOptions.textColor);
+>>>>>>> Avoiding trivial getters.
         mTextView.append("\n");
     }
 
