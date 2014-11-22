@@ -22,7 +22,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
+<<<<<<< HEAD
 import android.os.Handler;
+=======
+>>>>>>> Explicitly check for SYSTEM_ALERT_WINDOW permission.
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
@@ -35,13 +38,8 @@ public class Galgo {
         public void handleMessage(Message msg) {
             if (null != sService) {
                 String message = (String) msg.obj;
-<<<<<<< HEAD
                 int priority = msg.what;
                 sService.displayText(message, priority);
-=======
-                int level = msg.what;
-                sService.displayText(message, level);
->>>>>>> Added error logging functionality
             }
         }
     };
@@ -59,9 +57,12 @@ public class Galgo {
      */
     public static void enable(Context context, GalgoOptions options) {
         checkPermission(context);
+<<<<<<< HEAD
         if (options == null) {
             throw new IllegalArgumentException("GalgoOptions must not be null");
         }
+=======
+>>>>>>> Explicitly check for SYSTEM_ALERT_WINDOW permission.
         sOptions = options;
         init(context);
     }
@@ -132,6 +133,7 @@ public class Galgo {
     public static void error(String message) {
     	error(TAG, message);
     }
+<<<<<<< HEAD
      
     /**
      * Logs a String message to the screen using the defined 
@@ -147,11 +149,20 @@ public class Galgo {
     	msg.sendToTarget();
     }
 
-	 private static void checkPermission(Context context) {
+	private static void checkPermission(Context context) {
+=======
+
+    private static void checkPermission(Context context) {
+>>>>>>> Explicitly check for SYSTEM_ALERT_WINDOW permission.
         String permission = "android.permission.SYSTEM_ALERT_WINDOW";
         int status = context.checkCallingOrSelfPermission(permission);
         if (status == PackageManager.PERMISSION_DENIED) {
             throw new IllegalStateException("in order to use Galgo, " +
                     "please add the permission " + permission + " to your AndroidManifest.xml");
+        }
+<<<<<<< HEAD
+	}
+=======
     }
+>>>>>>> Explicitly check for SYSTEM_ALERT_WINDOW permission.
 }
