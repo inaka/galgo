@@ -137,6 +137,7 @@ public class Galgo {
     	Log.e(TAG, message);
     	Message msg = UI_HANDLER.obtainMessage(GalgoService.ERROR, message);
     	msg.sendToTarget();
+    }
 
     private static void checkPermission(Context context) {
         String permission = "android.permission.SYSTEM_ALERT_WINDOW";
