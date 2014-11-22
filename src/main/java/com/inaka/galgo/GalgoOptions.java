@@ -20,9 +20,7 @@ package com.inaka.galgo;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import android.graphics.Color;
 public final class GalgoOptions implements Parcelable {
-
 
     public final int numberOfLines;
     public final int backgroundColor;
@@ -113,13 +111,8 @@ public final class GalgoOptions implements Parcelable {
         }
     }
 
-    private static void ensurePositiveInt(int value, String msg) {
-        if (value <= 0) {
-            throw new IllegalArgumentException(msg);
-        }
-    }
-
     // Parcelable implementation
+
     private GalgoOptions(Parcel source) {
         numberOfLines = source.readInt();
         backgroundColor = source.readInt();
@@ -152,4 +145,9 @@ public final class GalgoOptions implements Parcelable {
         dest.writeInt(textSize);
     }
 
+    private static void ensurePositiveInt(int value, String msg) {
+        if (value <= 0) {
+            throw new IllegalArgumentException(msg);
+        }
+    }
 }
