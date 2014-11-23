@@ -21,10 +21,23 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 
 public class Galgo {
+
+    private static final Handler UI_HANDLER = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            if (null != sService) {
+                String message = (String) msg.obj;
+                sService.displayText(message);
+            }
+        }
+    };
 
     public static final String ARG_OPTIONS = "galgo.options";
     private static final String TAG = "Galgo";
@@ -85,8 +98,7 @@ public class Galgo {
      */
     public static void log(String message) {
         Log.i(TAG, message);
-        if(sService != null) {
-            sService.displayText(message);
-        }
+        Message msg = UI_HANDLER.obtainMessage(0, message);
+        msg.sendToTarget();
     }
 }
