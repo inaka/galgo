@@ -38,6 +38,9 @@ public class Galgo {
      * @param options Custom {@link com.inaka.galgo.GalgoOptions}
      */
     public static void enable(Context context, GalgoOptions options) {
+        if (options == null) {
+            throw new IllegalArgumentException("GalgoOptions must not be null");
+        }
         sOptions = options;
         init(context);
     }
@@ -47,8 +50,7 @@ public class Galgo {
      * @param context Context
      */
     public static void enable(Context context) {
-        sOptions = new GalgoOptions.Builder().build();
-        init(context);
+        enable(context, new GalgoOptions.Builder().build());
     }
 
     private static void init(Context context) {
