@@ -77,7 +77,7 @@ public class Galgo {
             }
 
             @Override
-            public void onServiceDisconnected(ComponentName c) {
+            	public void onServiceDisconnected(ComponentName c) {
             }
         };
 
