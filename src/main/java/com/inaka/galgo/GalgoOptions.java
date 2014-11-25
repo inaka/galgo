@@ -20,13 +20,16 @@ package com.inaka.galgo;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import android.graphics.Color;
+
 public final class GalgoOptions implements Parcelable {
 
-    private final int numberOfLines;
-    private final int backgroundColor;
-    private final int textColor;
-    private final int errorTextColor;
-    private final int textSize;
+
+    public final int numberOfLines;
+    public final int backgroundColor;
+    public final int textColor;
+	public final int errorTextColor;
+    public final int textSize;
 
     /**
      * Contains options for Galgo. Defines
@@ -38,26 +41,6 @@ public final class GalgoOptions implements Parcelable {
         textColor = builder.textColor;
         errorTextColor = builder.errorTextColor;
         textSize = builder.textSize;
-    }
-
-    public int getNumberOfLines() {
-        return numberOfLines;
-    }
-
-    public int getBackgroundColor() {
-        return backgroundColor;
-    }
-
-    public int getTextColor() {
-        return textColor;
-    }
-    
-    public int getErrorTextColor() {
-    	return errorTextColor;
-    }
-
-    public int getTextSize() {
-        return textSize;
     }
 
     /**

@@ -20,19 +20,24 @@ package com.inaka.galgo;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-<<<<<<< HEAD
 import android.graphics.Color;
 
-public final class GalgoOptions implements Serializable {
-=======
 public final class GalgoOptions implements Parcelable {
->>>>>>> Converting from Serializable to Parcelable.
 
+<<<<<<< HEAD
     private final int numberOfLines;
     private final int backgroundColor;
     private final int textColor;
     private final int errorTextColor;
     private final int textSize;
+=======
+
+    public final int numberOfLines;
+    public final int backgroundColor;
+    public final int textColor;
+	public final int errorTextColor;
+    public final int textSize;
+>>>>>>> Added error logging functionality
 
     /**
      * Contains options for Galgo. Defines
@@ -137,14 +142,6 @@ public final class GalgoOptions implements Parcelable {
         }
     }
 
-<<<<<<< HEAD
-    private static void ensurePositiveInt(int value, String msg) {
-        if (value <= 0) {
-            throw new IllegalArgumentException(msg);
-        }
-    }
-}
-=======
     // Parcelable implementation
 
     private GalgoOptions(Parcel source) {
@@ -179,5 +176,9 @@ public final class GalgoOptions implements Parcelable {
         dest.writeInt(textSize);
     }
 
+    private static void ensurePositiveInt(int value, String msg) {
+        if (value <= 0) {
+            throw new IllegalArgumentException(msg);
+        }
+    }
 }
->>>>>>> Converting from Serializable to Parcelable.

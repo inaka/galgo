@@ -52,7 +52,7 @@ public class GalgoService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        this.mOptions = (GalgoOptions) intent.getExtras().get(Galgo.ARG_OPTIONS);
+        this.mOptions = intent.getExtras().getParcelable(Galgo.ARG_OPTIONS);
         return mBinder;
     }
 
@@ -70,43 +70,47 @@ public class GalgoService extends Service {
         wm.addView(mTextView, params);
     }
 
+<<<<<<< HEAD
     public void displayText(String text, Integer priority) {
+=======
+    public void displayText(String text, Integer level) {
+>>>>>>> Added error logging functionality
 
         Spannable spannable = new SpannableString(text);
         spannable.setSpan(new BackgroundColorSpan(mOptions.backgroundColor),0, text.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-<<<<<<< HEAD
         int textColor;
         switch (priority){
             case ERROR:
-                textColor = mOptions.getErrorTextColor();
+                textColor = mOptions.errorTextColor();
                 break;
             default:
-                textColor = mOptions.getTextColor();
+                textColor = mOptions.textColor();
                 break;
         }
         spannable.setSpan(new ForegroundColorSpan(textColor),0,text.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-        if(mTextView.getLineCount() > mOptions.getNumberOfLines()) {
+        if(mTextView.getLineCount() > mOptions.numberOfLines()) {
             //TODO make this in scrolling mode only
             mTextView.setText(mTextView.getEditableText().delete(0, mTextView.getText().toString().split("\n", 2)[0].length()+1));
             mTextView.append(spannable);
-=======
-        if(mTextView.getLineCount() > mOptions.numberOfLines) {
-            mTextView.setText(spannable);
->>>>>>> Avoiding trivial getters.
         } else {
             mTextView.append(spannable);
         }
 
 <<<<<<< HEAD
-        mTextView.setTextSize(mOptions.getTextSize());
+        mTextView.setTextSize(mOptions.textSize());
 =======
+        switch (level){
+	        case ERROR:
+	        	mTextView.setTextColor(mOptions.errorTextColor());
+	        default:
+	        	mTextView.setTextColor(mOptions.textColor());
+        }		
         mTextView.setTextSize(mOptions.textSize);
-        mTextView.setTextColor(mOptions.textColor);
->>>>>>> Avoiding trivial getters.
+>>>>>>> Added error logging functionality
         mTextView.append("\n");
     }
 

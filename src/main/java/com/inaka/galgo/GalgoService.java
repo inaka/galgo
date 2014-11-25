@@ -79,10 +79,10 @@ public class GalgoService extends Service {
         int textColor;
         switch (priority){
             case ERROR:
-                textColor = mOptions.errorTextColor();
+                textColor = mOptions.errorTextColor;
                 break;
             default:
-                textColor = mOptions.textColor();
+                textColor = mOptions.textColor;
                 break;
         }
         spannable.setSpan(new ForegroundColorSpan(textColor),0,text.length(),
@@ -96,7 +96,7 @@ public class GalgoService extends Service {
             mTextView.append(spannable);
         }
 
-        mTextView.setTextSize(mOptions.textSize());
+        mTextView.setTextSize(mOptions.textSize);
         mTextView.append("\n");
     }
 
