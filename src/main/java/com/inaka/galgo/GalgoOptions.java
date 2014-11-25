@@ -20,11 +20,14 @@ package com.inaka.galgo;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import android.graphics.Color;
 public final class GalgoOptions implements Parcelable {
+
 
     public final int numberOfLines;
     public final int backgroundColor;
     public final int textColor;
+	public final int errorTextColor;
     public final int textSize;
 
     /**
@@ -35,6 +38,7 @@ public final class GalgoOptions implements Parcelable {
         numberOfLines = builder.numberOfLines;
         backgroundColor = builder.backgroundColor;
         textColor = builder.textColor;
+        errorTextColor = builder.errorTextColor;
         textSize = builder.textSize;
     }
 
@@ -44,7 +48,8 @@ public final class GalgoOptions implements Parcelable {
     public static class Builder {
         private int numberOfLines = 10;
         private int backgroundColor = 0xD993d2b9;
-        private int textColor = 0xFFFFFFFF;
+        private int textColor = Color.WHITE;
+        private int errorTextColor = Color.RED;
         private int textSize = 10;
 
         /**
@@ -75,6 +80,16 @@ public final class GalgoOptions implements Parcelable {
          */
         public Builder textColor(int color) {
             textColor = color;
+            return this;
+        }
+        
+        /**
+         * Sets the text color of messages logged as errors
+         * @param errorColor
+         * @return
+         */
+        public Builder errorTextColor(int errorColor) {
+            errorTextColor = errorColor;
             return this;
         }
 
