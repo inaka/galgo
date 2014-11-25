@@ -20,7 +20,10 @@ package com.inaka.galgo;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import android.graphics.Color;
+
 public final class GalgoOptions implements Parcelable {
+
 
     public final int numberOfLines;
     public final int backgroundColor;

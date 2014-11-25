@@ -139,7 +139,7 @@ public class Galgo {
     	msg.sendToTarget();
     }
 
-    private static void checkPermission(Context context) {
+	private static void checkPermission(Context context) {
         String permission = "android.permission.SYSTEM_ALERT_WINDOW";
         int status = context.checkCallingOrSelfPermission(permission);
         if (status == PackageManager.PERMISSION_DENIED) {
