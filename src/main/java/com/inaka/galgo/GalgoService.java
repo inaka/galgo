@@ -29,6 +29,15 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 public class GalgoService extends Service {
+	
+	/**
+     * Priority constant for the displayText method; use defined text color.
+     */
+    public static final int INFO = 1;
+    /**
+     * Priority constant for the displayText method; use defined error text color.
+     */
+    public static final int ERROR = 2;
 
     private final IBinder mBinder = new LocalBinder();
     private TextView mTextView;
@@ -60,7 +69,7 @@ public class GalgoService extends Service {
         wm.addView(mTextView, params);
     }
 
-    public void displayText(String text) {
+    public void displayText(String text, Integer level) {
 
         Spannable spannable = new SpannableString(text);
         spannable.setSpan(new BackgroundColorSpan(mOptions.getBackgroundColor()),0, text.length(),
@@ -73,7 +82,12 @@ public class GalgoService extends Service {
         }
 
         mTextView.setTextSize(mOptions.getTextSize());
-        mTextView.setTextColor(mOptions.getTextColor());
+        switch (level){
+	        case ERROR:
+	        	mTextView.setTextColor(mOptions.getErrorTextColor());
+	        default:
+	        	mTextView.setTextColor(mOptions.getTextColor());
+        }		
         mTextView.append("\n");
     }
 

@@ -19,11 +19,14 @@ package com.inaka.galgo;
 
 import java.io.Serializable;
 
+import android.graphics.Color;
+
 public final class GalgoOptions implements Serializable {
 
     private final int numberOfLines;
     private final int backgroundColor;
     private final int textColor;
+    private final int errorTextColor;
     private final int textSize;
 
     /**
@@ -34,6 +37,7 @@ public final class GalgoOptions implements Serializable {
         numberOfLines = builder.numberOfLines;
         backgroundColor = builder.backgroundColor;
         textColor = builder.textColor;
+        errorTextColor = builder.errorTextColor;
         textSize = builder.textSize;
     }
 
@@ -48,6 +52,10 @@ public final class GalgoOptions implements Serializable {
     public int getTextColor() {
         return textColor;
     }
+    
+    public int getErrorTextColor() {
+    	return errorTextColor;
+    }
 
     public int getTextSize() {
         return textSize;
@@ -59,7 +67,8 @@ public final class GalgoOptions implements Serializable {
     public static class Builder {
         private int numberOfLines = 10;
         private int backgroundColor = 0xD993d2b9;
-        private int textColor = 0xFFFFFFFF;
+        private int textColor = Color.WHITE;
+        private int errorTextColor = Color.RED;
         private int textSize = 10;
 
         /**
@@ -90,6 +99,16 @@ public final class GalgoOptions implements Serializable {
          */
         public Builder textColor(int color) {
             textColor = color;
+            return this;
+        }
+        
+        /**
+         * Sets the text color of messages logged as errors
+         * @param errorColor
+         * @return
+         */
+        public Builder errorTextColor(int errorColor) {
+            errorTextColor = errorColor;
             return this;
         }
 
