@@ -7,3 +7,10 @@
 /android-crop/build/
 /lib/build
 /build
+.apk
+.ap_
+.dex
+.class
+/bin/
+/gen/
+/proguard/
