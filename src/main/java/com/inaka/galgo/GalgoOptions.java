@@ -68,6 +68,7 @@ public final class GalgoOptions implements Serializable {
          * @return
          */
         public Builder numberOfLines(int n) {
+            ensurePositiveInt(n, "number of lines must be > 0");
             numberOfLines = n;
             return this;
         }
@@ -98,6 +99,7 @@ public final class GalgoOptions implements Serializable {
          * @return
          */
         public Builder textSize(int size) {
+            ensurePositiveInt(size, "text size must be > 0");
             textSize = size;
             return this;
         }
@@ -108,6 +110,12 @@ public final class GalgoOptions implements Serializable {
          */
         public GalgoOptions build() {
             return new GalgoOptions(this);
+        }
+    }
+
+    private static void ensurePositiveInt(int value, String msg) {
+        if (value <= 0) {
+            throw new IllegalArgumentException(msg);
         }
     }
 }

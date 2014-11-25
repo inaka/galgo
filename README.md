@@ -1,5 +1,7 @@
 Galgo
 =====
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Galgo-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1151)
+
 A tiny Android library for those moments when you want your logs to be displayed on screen. 
 
 ### Abstract
