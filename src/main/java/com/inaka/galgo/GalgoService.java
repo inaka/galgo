@@ -76,6 +76,7 @@ public class GalgoService extends Service {
         spannable.setSpan(new BackgroundColorSpan(mOptions.backgroundColor),0, text.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
+        if(mTextView.getLineCount() > mOptions.numberOfLines()) {
         int textColor;
         switch (priority){
             case ERROR:
