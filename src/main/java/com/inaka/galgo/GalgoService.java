@@ -89,7 +89,9 @@ public class GalgoService extends Service {
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         if(mTextView.getLineCount() > mOptions.numberOfLines) {
-            mTextView.setText(spannable);
+            //TODO make this in scrolling mode only
+            mTextView.setText(mTextView.getEditableText().delete(0, mTextView.getText().toString().split("\n", 2)[0].length()+1));
+            mTextView.append(spannable);
         } else {
             mTextView.append(spannable);
         }
