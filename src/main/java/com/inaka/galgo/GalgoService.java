@@ -18,8 +18,8 @@
 package com.inaka.galgo;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.PixelFormat;
 import android.os.Binder;
 import android.os.Environment;
@@ -31,12 +31,10 @@ import android.text.style.ForegroundColorSpan;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintStream;
 
 public class GalgoService extends Service {
@@ -82,7 +80,9 @@ public class GalgoService extends Service {
         WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
         wm.addView(mTextView, params);
 
-        File path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "Galgo Logs");
+        Resources res = getResources();
+        String dirName = res.getString(R.string.app_name);
+        File path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), dirName);
         path.mkdirs();
         File file = new File(path, "Log.txt");
 
