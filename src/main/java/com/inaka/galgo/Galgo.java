@@ -27,12 +27,6 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-
 public class Galgo {
 
     private static final Handler UI_HANDLER = new Handler(Looper.getMainLooper()) {
