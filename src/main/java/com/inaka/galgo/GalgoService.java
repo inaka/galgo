@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Binder;
+import android.os.Environment;
 import android.os.IBinder;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -81,13 +82,13 @@ public class GalgoService extends Service {
         WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
         wm.addView(mTextView, params);
 
-        File path = new File(getFilesDir(), "Log Folder");
+        File path = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "Galgo Logs");
         path.mkdirs();
         File file = new File(path, "Log.txt");
 
         try {
             out = new FileOutputStream(file, true);
-            p = new PrintStream(out);
+            p = new PrintStream(out, true);
         } catch(FileNotFoundException ex) {
             ex.printStackTrace();
         }
