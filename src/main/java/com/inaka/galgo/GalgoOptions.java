@@ -17,9 +17,10 @@
  */
 package com.inaka.galgo;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public final class GalgoOptions implements Serializable {
+public final class GalgoOptions implements Parcelable {
 
     public final int numberOfLines;
     public final int backgroundColor;
@@ -102,4 +103,38 @@ public final class GalgoOptions implements Serializable {
             throw new IllegalArgumentException(msg);
         }
     }
+
+    // Parcelable implementation
+    private GalgoOptions(Parcel source) {
+        numberOfLines = source.readInt();
+        backgroundColor = source.readInt();
+        textColor = source.readInt();
+        textSize = source.readInt();
+    }
+
+    public static final Creator<GalgoOptions> CREATOR = new Creator<GalgoOptions>() {
+        @Override
+        public GalgoOptions createFromParcel(Parcel source) {
+            return new GalgoOptions(source);
+        }
+
+        @Override
+        public GalgoOptions[] newArray(int size) {
+            return new GalgoOptions[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0; // No special content.
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(numberOfLines);
+        dest.writeInt(backgroundColor);
+        dest.writeInt(textColor);
+        dest.writeInt(textSize);
+    }
+
 }
