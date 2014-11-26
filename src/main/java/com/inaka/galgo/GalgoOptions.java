@@ -28,6 +28,7 @@ public final class GalgoOptions implements Serializable {
     private final int textColor;
     private final int errorTextColor;
     private final int textSize;
+    private final boolean logToTextFile;
 
     /**
      * Contains options for Galgo. Defines
@@ -39,6 +40,7 @@ public final class GalgoOptions implements Serializable {
         textColor = builder.textColor;
         errorTextColor = builder.errorTextColor;
         textSize = builder.textSize;
+        logToTextFile = builder.logToTextFile;
     }
 
     public int getNumberOfLines() {
@@ -61,6 +63,8 @@ public final class GalgoOptions implements Serializable {
         return textSize;
     }
 
+    public boolean getLogToTextFile() { return logToTextFile; }
+
     /**
      * Builder for {@link com.inaka.galgo.GalgoOptions}
      */
@@ -70,6 +74,7 @@ public final class GalgoOptions implements Serializable {
         private int textColor = Color.WHITE;
         private int errorTextColor = Color.RED;
         private int textSize = 10;
+        private boolean logToTextFile = false;
 
         /**
          *
@@ -120,6 +125,16 @@ public final class GalgoOptions implements Serializable {
         public Builder textSize(int size) {
             ensurePositiveInt(size, "text size must be > 0");
             textSize = size;
+            return this;
+        }
+
+        /**
+         * Saves logging data to text file if the input is true
+         * @param logTextFile
+         * @return
+         */
+        public Builder logToTextFile(boolean logTextFile) {
+            logToTextFile = logTextFile;
             return this;
         }
 
