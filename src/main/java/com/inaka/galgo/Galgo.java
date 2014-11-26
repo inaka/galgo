@@ -34,8 +34,8 @@ public class Galgo {
         public void handleMessage(Message msg) {
             if (null != sService) {
                 String message = (String) msg.obj;
-                int level = msg.what;
-                sService.displayText(message, level);
+                int priority = msg.what;
+                sService.displayText(message, priority);
             }
         }
     };
