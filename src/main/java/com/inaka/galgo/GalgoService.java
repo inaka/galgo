@@ -25,6 +25,7 @@ import android.os.IBinder;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -69,10 +70,22 @@ public class GalgoService extends Service {
         wm.addView(mTextView, params);
     }
 
-    public void displayText(String text, Integer level) {
+    public void displayText(String text, Integer priority) {
 
         Spannable spannable = new SpannableString(text);
         spannable.setSpan(new BackgroundColorSpan(mOptions.backgroundColor),0, text.length(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        int textColor;
+        switch (priority){
+            case ERROR:
+                textColor = mOptions.errorTextColor;
+                break;
+            default:
+                textColor = mOptions.textColor;
+                break;
+        }
+        spannable.setSpan(new ForegroundColorSpan(textColor),0,text.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         if(mTextView.getLineCount() > mOptions.numberOfLines) {
@@ -82,12 +95,6 @@ public class GalgoService extends Service {
         }
 
         mTextView.setTextSize(mOptions.textSize);
-        switch (level){
-	        case ERROR:
-	        	mTextView.setTextColor(mOptions.errorTextColor);
-	        default:
-	        	mTextView.setTextColor(mOptions.textColor);
-        }		
         mTextView.append("\n");
     }
 
