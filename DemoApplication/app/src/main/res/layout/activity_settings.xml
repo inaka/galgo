@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <TableRow>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/write_to_file" android:textSize="30dp" android:layout_weight="1"/>
+        <CheckBox android:id="@+id/write_to_file" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </TableRow>
+    <TableRow>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Set Text Size 'dp'" android:textSize="30dp" android:layout_weight="2"/>
+        <EditText android:id="@+id/set_text_size" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_weight="1" android:inputType="number"/>
+    </TableRow>
+    <TableRow>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Number of Lines" android:textSize="30dp" android:layout_weight="2"/>
+        <EditText android:id="@+id/num_of_lines" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_weight="1" android:inputType="number"/>
+    </TableRow>
+
+
+
+
+</TableLayout>
