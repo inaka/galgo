@@ -17,10 +17,9 @@
  */
 package com.inaka.galgo;
 
+import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import android.graphics.Color;
 
 public final class GalgoOptions implements Parcelable {
 
@@ -115,11 +114,11 @@ public final class GalgoOptions implements Parcelable {
     }
 
     // Parcelable implementation
-
     private GalgoOptions(Parcel source) {
         numberOfLines = source.readInt();
         backgroundColor = source.readInt();
         textColor = source.readInt();
+        errorTextColor = source.readInt();
         textSize = source.readInt();
     }
 
@@ -145,6 +144,7 @@ public final class GalgoOptions implements Parcelable {
         dest.writeInt(numberOfLines);
         dest.writeInt(backgroundColor);
         dest.writeInt(textColor);
+        dest.writeInt(errorTextColor);
         dest.writeInt(textSize);
     }
 
