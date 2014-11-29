@@ -148,5 +148,6 @@ public class Galgo {
         if (status == PackageManager.PERMISSION_DENIED) {
             throw new IllegalStateException("in order to use Galgo, " +
                     "please add the permission " + permission + " to your AndroidManifest.xml");
-    }
+        }
+	}
 }

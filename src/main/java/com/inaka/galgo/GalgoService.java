@@ -76,7 +76,6 @@ public class GalgoService extends Service {
         spannable.setSpan(new BackgroundColorSpan(mOptions.backgroundColor),0, text.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-        if(mTextView.getLineCount() > mOptions.numberOfLines()) {
         int textColor;
         switch (priority){
             case ERROR:
@@ -90,7 +89,6 @@ public class GalgoService extends Service {
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         if(mTextView.getLineCount() > mOptions.numberOfLines) {
-            //TODO make this in scrolling mode only
             mTextView.setText(mTextView.getEditableText().delete(0, mTextView.getText().toString().split("\n", 2)[0].length()+1));
             mTextView.append(spannable);
         } else {
