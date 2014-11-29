@@ -54,9 +54,6 @@ public class Galgo {
      */
     public static void enable(Context context, GalgoOptions options) {
         checkPermission(context);
-        if (options == null) {
-            throw new IllegalArgumentException("GalgoOptions must not be null");
-        }
         sOptions = options;
         init(context);
     }
