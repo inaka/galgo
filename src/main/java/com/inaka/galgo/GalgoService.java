@@ -94,6 +94,7 @@ public class GalgoService extends Service {
         } else {
             mTextView.append(spannable);
         }
+
         mTextView.setTextSize(mOptions.textSize);
         mTextView.append("\n");
     }
