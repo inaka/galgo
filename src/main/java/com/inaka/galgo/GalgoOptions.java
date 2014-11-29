@@ -17,10 +17,7 @@
  */
 package com.inaka.galgo;
 
-<<<<<<< HEAD
 import android.graphics.Color;
-=======
->>>>>>> Converting from Serializable to Parcelable.
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -117,18 +114,12 @@ public final class GalgoOptions implements Parcelable {
     }
 
     // Parcelable implementation
-<<<<<<< HEAD
-=======
 
->>>>>>> Converting from Serializable to Parcelable.
     private GalgoOptions(Parcel source) {
         numberOfLines = source.readInt();
         backgroundColor = source.readInt();
         textColor = source.readInt();
-<<<<<<< HEAD
         errorTextColor = source.readInt();
-=======
->>>>>>> Converting from Serializable to Parcelable.
         textSize = source.readInt();
     }
 
@@ -154,7 +145,6 @@ public final class GalgoOptions implements Parcelable {
         dest.writeInt(numberOfLines);
         dest.writeInt(backgroundColor);
         dest.writeInt(textColor);
-<<<<<<< HEAD
         dest.writeInt(errorTextColor);
         dest.writeInt(textSize);
     }
@@ -165,9 +155,4 @@ public final class GalgoOptions implements Parcelable {
         }
     }
 }
-=======
-        dest.writeInt(textSize);
-    }
 
-}
->>>>>>> Converting from Serializable to Parcelable.
