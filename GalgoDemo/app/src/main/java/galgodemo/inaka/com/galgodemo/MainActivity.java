@@ -49,9 +49,9 @@ public class MainActivity extends Activity {
            }
         });
 
-        Galgo.log("Application Started");
-
         Galgo.enable(this, options);
+        
+        Galgo.log("Application Started");
     }
 
     public void setOptions() {
