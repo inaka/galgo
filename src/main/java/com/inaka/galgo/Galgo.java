@@ -139,12 +139,18 @@ public class Galgo {
     	msg.sendToTarget();
     }
 
-	private static void checkPermission(Context context) {
-        String permission = "android.permission.SYSTEM_ALERT_WINDOW";
-        int status = context.checkCallingOrSelfPermission(permission);
+    private static void checkPermission(Context context) {
+        String system_alert_window_permission = "android.permission.SYSTEM_ALERT_WINDOW";
+        String write_external_storage_permission = "android.permission.WRITE_EXTERNAL_STORAGE";
+        int status = context.checkCallingOrSelfPermission(system_alert_window_permission);
         if (status == PackageManager.PERMISSION_DENIED) {
             throw new IllegalStateException("in order to use Galgo, " +
-                    "please add the permission " + permission + " to your AndroidManifest.xml");
+                    "please add the permission " + system_alert_window_permission + " to your AndroidManifest.xml");
+        }
+        status = context.checkCallingOrSelfPermission(write_external_storage_permission);
+        if (status == PackageManager.PERMISSION_DENIED) {
+            throw new IllegalStateException("in order to use Galgo, " +
+                    "please add the permission " + write_external_storage_permission + " to your AndroidManifest.xml");
         }
 	}
 }

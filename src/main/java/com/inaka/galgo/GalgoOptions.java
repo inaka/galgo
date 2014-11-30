@@ -29,6 +29,7 @@ public final class GalgoOptions implements Parcelable {
     public final int textColor;
 	public final int errorTextColor;
     public final int textSize;
+	public final boolean saveToTextFile;
 
     /**
      * Contains options for Galgo. Defines
@@ -40,6 +41,7 @@ public final class GalgoOptions implements Parcelable {
         textColor = builder.textColor;
         errorTextColor = builder.errorTextColor;
         textSize = builder.textSize;
+		saveToTextFile = builder.saveToTextFile;
     }
 
     /**
@@ -51,6 +53,7 @@ public final class GalgoOptions implements Parcelable {
         private int textColor = Color.WHITE;
         private int errorTextColor = Color.RED;
         private int textSize = 10;
+		private boolean saveToTextFile = false;
 
         /**
          *
@@ -105,6 +108,16 @@ public final class GalgoOptions implements Parcelable {
         }
 
         /**
+         * Sets saving to a text file to true
+         * @param save
+         * @return
+         */
+		public Builder saveToTextFile(boolean save) {
+			saveToTextFile = save;
+			return this;
+		}
+
+        /**
          * Creates a {@link com.inaka.galgo.GalgoOptions} with the customized parameters
          * @return
          */
@@ -121,6 +134,7 @@ public final class GalgoOptions implements Parcelable {
         textColor = source.readInt();
         errorTextColor = source.readInt();
         textSize = source.readInt();
+        saveToTextFile = (source.readByte() != 0);
     }
 
     public static final Creator<GalgoOptions> CREATOR = new Creator<GalgoOptions>() {
@@ -147,6 +161,7 @@ public final class GalgoOptions implements Parcelable {
         dest.writeInt(textColor);
         dest.writeInt(errorTextColor);
         dest.writeInt(textSize);
+        dest.writeByte((byte) (saveToTextFile ? 1:0));
     }
 
     private static void ensurePositiveInt(int value, String msg) {
