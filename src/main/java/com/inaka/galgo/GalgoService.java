@@ -25,10 +25,20 @@ import android.os.IBinder;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.WindowManager;
 import android.widget.TextView;
 
 public class GalgoService extends Service {
+	
+	/**
+     * Priority constant for the displayText method; use defined text color.
+     */
+    public static final int INFO = 1;
+    /**
+     * Priority constant for the displayText method; use defined error text color.
+     */
+    public static final int ERROR = 2;
 
     private final IBinder mBinder = new LocalBinder();
     private TextView mTextView;
@@ -60,20 +70,32 @@ public class GalgoService extends Service {
         wm.addView(mTextView, params);
     }
 
-    public void displayText(String text) {
+    public void displayText(String text, Integer priority) {
 
         Spannable spannable = new SpannableString(text);
         spannable.setSpan(new BackgroundColorSpan(mOptions.backgroundColor),0, text.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
+        int textColor;
+        switch (priority){
+            case ERROR:
+                textColor = mOptions.errorTextColor;
+                break;
+            default:
+                textColor = mOptions.textColor;
+                break;
+        }
+        spannable.setSpan(new ForegroundColorSpan(textColor),0,text.length(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
         if(mTextView.getLineCount() > mOptions.numberOfLines) {
-            mTextView.setText(spannable);
+            mTextView.setText(mTextView.getEditableText().delete(0, mTextView.getText().toString().split("\n", 2)[0].length()+1));
+            mTextView.append(spannable);
         } else {
             mTextView.append(spannable);
         }
 
         mTextView.setTextSize(mOptions.textSize);
-        mTextView.setTextColor(mOptions.textColor);
         mTextView.append("\n");
     }
 

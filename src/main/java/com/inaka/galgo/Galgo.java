@@ -35,7 +35,8 @@ public class Galgo {
         public void handleMessage(Message msg) {
             if (null != sService) {
                 String message = (String) msg.obj;
-                sService.displayText(message);
+                int priority = msg.what;
+                sService.displayText(message, priority);
             }
         }
     };
@@ -76,7 +77,7 @@ public class Galgo {
             }
 
             @Override
-            public void onServiceDisconnected(ComponentName c) {
+            	public void onServiceDisconnected(ComponentName c) {
             }
         };
 
@@ -91,24 +92,59 @@ public class Galgo {
     }
 
     /**
+     * Logs a String message to the screen and standard output via 
+     * {@link #log(String, String)} using the default tag
+     * 
+     * @param message String to be displayed
+     */
+    public static void log(String message) {
+        log(TAG, message);
+    }
+    
+    /**
      * Logs a String message to the screen. This String will be overlayed on top of the
      * UI elements currently displayed on screen. As a side effect, this message will
      * also be logged to the standard output via {@link android.util.Log}.
      *
      * @param message String to be displayed
+     * @param TAG String to use as logging tag
      */
-    public static void log(String message) {
-        Log.i(TAG, message);
-        Message msg = UI_HANDLER.obtainMessage(0, message);
+    public static void log (String TAG, String message){
+    	Log.i(TAG, message);
+        Message msg = UI_HANDLER.obtainMessage(GalgoService.INFO, message);
         msg.sendToTarget();
     }
+    
+    /**
+     * Logs a String message to the screen and standard output as an error via 
+     * {@link #error(String, String)} using the default tag
+     * 
+     * @param message String to be displayed
+     */
+    public static void error(String message) {
+    	error(TAG, message);
+    }
+     
+    /**
+     * Logs a String message to the screen using the defined 
+     * error color and to standard output as an error via 
+     * {@link android.util.Log}
+     * 
+     * @param message String to be displayed
+     * @param TAG String to use as logging tag
+     */
+    public static void error(String TAG, String message){
+    	Log.e(TAG, message);
+    	Message msg = UI_HANDLER.obtainMessage(GalgoService.ERROR, message);
+    	msg.sendToTarget();
+    }
 
-    private static void checkPermission(Context context) {
+	private static void checkPermission(Context context) {
         String permission = "android.permission.SYSTEM_ALERT_WINDOW";
         int status = context.checkCallingOrSelfPermission(permission);
         if (status == PackageManager.PERMISSION_DENIED) {
             throw new IllegalStateException("in order to use Galgo, " +
                     "please add the permission " + permission + " to your AndroidManifest.xml");
         }
-    }
+	}
 }
