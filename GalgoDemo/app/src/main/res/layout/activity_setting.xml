@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableRow>
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+            android:text="Set Number Of Lines" android:layout_weight="1" android:textSize="20dp"/>
+        <EditText android:id="@+id/num_lines" android:layout_width="wrap_content" android:layout_height="match_parent"
+           android:inputType="number" android:maxWidth="60dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+            android:text="Text Size" android:layout_weight="1" android:textSize="20dp"/>
+        <EditText android:id="@+id/text_size" android:layout_width="wrap_content" android:layout_height="match_parent"
+            android:inputType="number" android:maxWidth="60dp"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+            android:text="Background Colour" android:layout_weight="1" android:textSize="20dp"/>
+        <Spinner android:id="@+id/background_colour" android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+    </TableRow>
+
+    <TableRow>
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+            android:text="Text Colour" android:layout_weight="1" android:textSize="20dp"/>
+        <Spinner android:id="@+id/text_colour" android:layout_width="fill_parent"
+            android:layout_height="wrap_content"/>
+    </TableRow>
+
+</TableLayout>
