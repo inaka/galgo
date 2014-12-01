@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
 
     private static GalgoOptions options;
     private static int numberOfLines = 15;
-    private static int backgroundColour = Color.parseColor("#D9d6d6d6");
+    private static int backgroundColour = Color.GREY;
     private static int textColour = Color.BLACK;
     private static int textSize = 15;
     private static boolean changed = false;
