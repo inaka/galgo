@@ -17,15 +17,19 @@
  */
 package com.inaka.galgo;
 
+import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public final class GalgoOptions implements Parcelable {
 
+
     public final int numberOfLines;
     public final int backgroundColor;
     public final int textColor;
+	public final int errorTextColor;
     public final int textSize;
+	public final boolean saveToTextFile;
 
     /**
      * Contains options for Galgo. Defines
@@ -35,7 +39,9 @@ public final class GalgoOptions implements Parcelable {
         numberOfLines = builder.numberOfLines;
         backgroundColor = builder.backgroundColor;
         textColor = builder.textColor;
+        errorTextColor = builder.errorTextColor;
         textSize = builder.textSize;
+		saveToTextFile = builder.saveToTextFile;
     }
 
     /**
@@ -44,8 +50,10 @@ public final class GalgoOptions implements Parcelable {
     public static class Builder {
         private int numberOfLines = 10;
         private int backgroundColor = 0xD993d2b9;
-        private int textColor = 0xFFFFFFFF;
+        private int textColor = Color.WHITE;
+        private int errorTextColor = Color.RED;
         private int textSize = 10;
+		private boolean saveToTextFile = false;
 
         /**
          *
@@ -77,6 +85,16 @@ public final class GalgoOptions implements Parcelable {
             textColor = color;
             return this;
         }
+        
+        /**
+         * Sets the text color of messages logged as errors
+         * @param errorColor
+         * @return
+         */
+        public Builder errorTextColor(int errorColor) {
+            errorTextColor = errorColor;
+            return this;
+        }
 
         /**
          * Sets the text size of the messages
@@ -90,6 +108,16 @@ public final class GalgoOptions implements Parcelable {
         }
 
         /**
+         * Sets saving to a text file to true
+         * @param save
+         * @return
+         */
+		public Builder saveToTextFile(boolean save) {
+			saveToTextFile = save;
+			return this;
+		}
+
+        /**
          * Creates a {@link com.inaka.galgo.GalgoOptions} with the customized parameters
          * @return
          */
@@ -98,18 +126,15 @@ public final class GalgoOptions implements Parcelable {
         }
     }
 
-    private static void ensurePositiveInt(int value, String msg) {
-        if (value <= 0) {
-            throw new IllegalArgumentException(msg);
-        }
-    }
-
     // Parcelable implementation
+
     private GalgoOptions(Parcel source) {
         numberOfLines = source.readInt();
         backgroundColor = source.readInt();
         textColor = source.readInt();
+        errorTextColor = source.readInt();
         textSize = source.readInt();
+        saveToTextFile = (source.readByte() != 0);
     }
 
     public static final Creator<GalgoOptions> CREATOR = new Creator<GalgoOptions>() {
@@ -134,7 +159,15 @@ public final class GalgoOptions implements Parcelable {
         dest.writeInt(numberOfLines);
         dest.writeInt(backgroundColor);
         dest.writeInt(textColor);
+        dest.writeInt(errorTextColor);
         dest.writeInt(textSize);
+        dest.writeByte((byte) (saveToTextFile ? 1:0));
     }
 
+    private static void ensurePositiveInt(int value, String msg) {
+        if (value <= 0) {
+            throw new IllegalArgumentException(msg);
+        }
+    }
 }
+
