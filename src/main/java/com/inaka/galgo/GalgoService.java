@@ -24,15 +24,21 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.BackgroundColorSpan;
 import android.view.WindowManager;
 import android.widget.TextView;
+
+import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Queue;
 
 public class GalgoService extends Service {
 
     private final IBinder mBinder = new LocalBinder();
     private TextView mTextView;
     private GalgoOptions mOptions;
+    private final Queue<String> mLines = new ArrayDeque<>();
 
     public class LocalBinder extends Binder {
         public GalgoService getService() {
@@ -61,20 +67,23 @@ public class GalgoService extends Service {
     }
 
     public void displayText(String text) {
-
-        Spannable spannable = new SpannableString(text);
-        spannable.setSpan(new BackgroundColorSpan(mOptions.backgroundColor),0, text.length(),
-                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        if(mTextView.getLineCount() > mOptions.numberOfLines) {
-            mTextView.setText(spannable);
-        } else {
-            mTextView.append(spannable);
+        mLines.add(text);
+        if (mLines.size() > mOptions.numberOfLines) {
+            mLines.poll();
         }
 
+        redraw(mLines);
+    }
+
+    private void redraw(Collection<String> texts) {
         mTextView.setTextSize(mOptions.textSize);
         mTextView.setTextColor(mOptions.textColor);
-        mTextView.append("\n");
+
+        Spannable spannable = new SpannableString(TextUtils.join("\n", texts));
+        spannable.setSpan(new BackgroundColorSpan(mOptions.backgroundColor), 0, spannable.length(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        mTextView.setText(spannable);
     }
 
     @Override
