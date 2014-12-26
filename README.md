@@ -20,8 +20,7 @@ Download .aar file **[here](https://github.com/inaka/galgo/releases/latest)**
 1. `File --> New Module --> More Modules --> Import .JAR or .AAR Package`
 2. Select the file `galgo-release-1.0.aar`. Hit Finish.
 3. Add the following to the dependencies section in you project's build.gradle file: `compile project(':galgo-release-1.0')`
-4. Add the following to your manifest file: `<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />`
-5. Done.
+4. Done.
 
 Another option is to simply clone this repo and import it into Android Studio as a module.
 
