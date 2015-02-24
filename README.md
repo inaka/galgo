@@ -13,14 +13,21 @@ Extremely useful for testers who want to have more insight into what's going on 
 You can also define some basic settings such as background color, text color, text size and number of lines to display on screen so it better fits your needs.
 
 ### How to download and Install
-If you're using Android Studio, the simplest way is to download the .aar file and import it as an Android Studio project. Here's how:
+Add the following to your `build.gradle` file:
 
-Download .aar file **[here](https://github.com/inaka/galgo/releases/latest)**
+```groovy
+repositories {
+	maven {
+		url "https://jitpack.io"
+	}
+}
 
-1. `File --> New Module --> More Modules --> Import .JAR or .AAR Package`
-2. Select the file `galgo-release-1.0.aar`. Hit Finish.
-3. Add the following to the dependencies section in you project's build.gradle file: `compile project(':galgo-release-1.0')`
-4. Done.
+dependencies {
+	// ...
+    compile 'com.github.jitpack:galgo:1.0.2'
+    // ...
+}
+```
 
 Another option is to simply clone this repo and import it into Android Studio as a module.
 
