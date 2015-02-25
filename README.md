@@ -24,7 +24,7 @@ repositories {
 
 dependencies {
 	// ...
-    compile 'com.github.jitpack:galgo:1.0.2'
+    compile 'com.github.inaka:galgo:v1.0.2'
     // ...
 }
 ```
