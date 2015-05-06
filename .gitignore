@@ -1,4 +1,5 @@
 .gradle
+.idea
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
@@ -7,3 +8,6 @@
 /android-crop/build/
 /lib/build
 /build
+gradlew
+gradlew.bat
+
