@@ -8,3 +8,6 @@
 /android-crop/build/
 /lib/build
 /build
+gradlew
+gradlew.bat
+
