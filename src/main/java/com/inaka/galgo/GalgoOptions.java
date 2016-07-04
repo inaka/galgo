@@ -29,6 +29,7 @@ public final class GalgoOptions implements Parcelable {
 
     /**
      * Contains options for Galgo. Defines
+     *
      * @param builder
      */
     private GalgoOptions(Builder builder) {
@@ -48,7 +49,6 @@ public final class GalgoOptions implements Parcelable {
         private int textSize = 10;
 
         /**
-         *
          * @param n number of lines
          * @return
          */
@@ -60,6 +60,7 @@ public final class GalgoOptions implements Parcelable {
 
         /**
          * Sets the background color of the log messages
+         *
          * @param color
          * @return
          */
@@ -70,6 +71,7 @@ public final class GalgoOptions implements Parcelable {
 
         /**
          * Sets the text color of the log messages
+         *
          * @param color
          * @return
          */
@@ -80,6 +82,7 @@ public final class GalgoOptions implements Parcelable {
 
         /**
          * Sets the text size of the messages
+         *
          * @param size
          * @return
          */
@@ -91,6 +94,7 @@ public final class GalgoOptions implements Parcelable {
 
         /**
          * Creates a {@link com.inaka.galgo.GalgoOptions} with the customized parameters
+         *
          * @return
          */
         public GalgoOptions build() {

@@ -48,6 +48,7 @@ public class Galgo {
 
     /**
      * * Starts a new Galgo with custom {@link com.inaka.galgo.GalgoOptions}
+     *
      * @param context Context
      * @param options Custom {@link com.inaka.galgo.GalgoOptions}
      */
@@ -59,6 +60,7 @@ public class Galgo {
 
     /**
      * Starts a new Galgo with default {@link com.inaka.galgo.GalgoOptions}
+     *
      * @param context Context
      */
     public static void enable(Context context) {
