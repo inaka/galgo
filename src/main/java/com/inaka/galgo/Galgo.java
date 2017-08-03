@@ -22,10 +22,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
+import android.provider.Settings;
 import android.util.Log;
 
 public class Galgo {
@@ -48,6 +50,7 @@ public class Galgo {
 
     /**
      * * Starts a new Galgo with custom {@link com.inaka.galgo.GalgoOptions}
+     *
      * @param context Context
      * @param options Custom {@link com.inaka.galgo.GalgoOptions}
      */
@@ -59,6 +62,7 @@ public class Galgo {
 
     /**
      * Starts a new Galgo with default {@link com.inaka.galgo.GalgoOptions}
+     *
      * @param context Context
      */
     public static void enable(Context context) {
@@ -105,10 +109,17 @@ public class Galgo {
 
     private static void checkPermission(Context context) {
         String permission = "android.permission.SYSTEM_ALERT_WINDOW";
-        int status = context.checkCallingOrSelfPermission(permission);
-        if (status == PackageManager.PERMISSION_DENIED) {
-            throw new IllegalStateException("in order to use Galgo, " +
-                    "please add the permission " + permission + " to your AndroidManifest.xml");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.canDrawOverlays(context)) {
+                throw new IllegalStateException("in order to use Galgo, " +
+                        "please add the permission " + permission + " to your AndroidManifest.xml");
+            }
+        } else {
+            int status = context.checkCallingOrSelfPermission(permission);
+            if (status == PackageManager.PERMISSION_DENIED) {
+                throw new IllegalStateException("in order to use Galgo, " +
+                        "please add the permission " + permission + " to your AndroidManifest.xml");
+            }
         }
     }
 }
