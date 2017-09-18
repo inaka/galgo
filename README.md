@@ -67,9 +67,4 @@ Here's an example of the log messages being displayed on top of our Activity:
 <img src="http://i61.tinypic.com/2qw3by0.gif" align="center" style="float:center" height="400" />
 
 ### Contact Us
-For **questions** or **general comments** regarding the use of this library, please use our public
-[hipchat room](http://inaka.net/hipchat).
-
 If you find any **bugs** or have a **problem** while using this library, please [open an issue](https://github.com/inaka/galgo/issues/new) in this repo (or a pull request :)).
-
-And you can check all of our open-source projects at [inaka.github.io](http://inaka.github.io)
